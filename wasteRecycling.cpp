@@ -1,6 +1,8 @@
 #include <iostream>
 #include "Garbages/Garbage.h"
 #include "Garbages/PaperGarbage.h"
+#include "Garbages/PlasticGarbage.h"
+
 using namespace std;
 
 int main() {
@@ -16,5 +18,12 @@ int main() {
     cout << paperGarbage.getIsSqueezed() << endl;
     PaperGarbage paperGarbage2("papi2");
     paperGarbage2.printName();
+
+    PlasticGarbage plasticGarbage("mert ez műanyag");
+    plasticGarbage.printName();
+    cout << plasticGarbage.getIsClean() << endl;
+    plasticGarbage.clean();
+    cout << plasticGarbage.getIsClean() << endl;
+
     return 0;
 }
