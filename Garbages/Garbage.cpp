@@ -12,7 +12,7 @@ void Garbage::printName() {
     cout << name << endl;
 }
 
-string Garbage::getName() {
+string Garbage::getName() const {
     return name;
 }
 

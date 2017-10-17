@@ -19,7 +19,7 @@ int main() {
     cout << paperGarbage.getIsSqueezed() << endl;
     */
     PaperGarbage paperGarbage2("papi2");
-    //paperGarbage2.squeeze();
+    paperGarbage2.squeeze();
     paperGarbage2.printName();
 
     /*

@@ -13,7 +13,7 @@ public:
     Garbage(){};
     Garbage(string name);
     void printName();
-    string getName();
+    string getName() const;
     void setName(string);
 
 protected:
