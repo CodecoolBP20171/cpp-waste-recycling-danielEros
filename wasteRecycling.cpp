@@ -2,7 +2,7 @@
 #include "Garbages/Garbage.h"
 #include "Garbages/PaperGarbage.h"
 #include "Garbages/PlasticGarbage.h"
-//#include "ErrorHandling/DustBinExceptions.hpp"
+#include "Dustbins/Dustbin.h"
 
 using namespace std;
 
@@ -25,6 +25,11 @@ int main() {
     cout << plasticGarbage.getIsClean() << endl;
     plasticGarbage.clean();
     cout << plasticGarbage.getIsClean() << endl;
+
+    Dustbin dustbin("green");
+    cout << dustbin.getColor() << endl;
+    dustbin.paperContent[10] = paperGarbage;
+    cout << dustbin.paperContent[10].getName();
 
     return 0;
 }
