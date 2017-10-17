@@ -19,10 +19,10 @@ public:
     Dustbin(string color);
     string getColor();
     void setColor();
-    //TODO: Should be protected:
-    unique_ptr<PaperGarbage[]> paperContent;
+    void throwOutPaperGarbage(const PaperGarbage &paperGarbage);
 protected:
     string color;
+    unique_ptr<PaperGarbage[]> paperContent;
 };
 
 

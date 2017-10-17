@@ -28,8 +28,8 @@ int main() {
 
     Dustbin dustbin("green");
     cout << dustbin.getColor() << endl;
-    dustbin.paperContent[10] = paperGarbage;
-    cout << dustbin.paperContent[10].getName();
-
+    //dustbin.paperContent[0] = paperGarbage;
+    //cout << dustbin.paperContent[0].getName();
+    dustbin.throwOutPaperGarbage(paperGarbage);
     return 0;
 }
