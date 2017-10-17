@@ -10,11 +10,13 @@ using namespace std;
 
 class Garbage {
 public:
+    Garbage(){};
     Garbage(string name);
     void printName();
     string getName();
     void setName(string);
-private:
+
+protected:
     string name;
 };
 
