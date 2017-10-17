@@ -7,7 +7,7 @@
 
 #include <exception>
 
-class DustbinContentError : public exception {
+class DustbinContentError : public std::exception {
 public:
     virtual const char* what() const noexcept {
         return "This garbage cannot be put in the dustbin in this form!";
