@@ -3,6 +3,7 @@
 //
 
 #include "Dustbin.h"
+#include "../ErrorHandling/DustBinExceptions.hpp"
 
 Dustbin::Dustbin() : paperContent(new PaperGarbage[10]){}
 
@@ -26,6 +27,11 @@ void Dustbin::throwOutPaperGarbage(const PaperGarbage &paperGarbage) {
     //  if there is no room, throw a DustbinIsFull exception
     // 4. MAX_SIZE should be a const variable, or a macro instead of the hard coded 10
     // 5. EXTRA: max weight -> leads to far from here
-    paperContent[0] = paperGarbage;
-    cout << paperContent[0].getName() << endl;
+    if(paperGarbage.getIsSqueezed()){
+        paperContent[0] = paperGarbage;
+        paperContent[1].setName("kkk");
+        cout << paperContent[1].getName() << endl;
+    } else {
+        throw DustbinContentError();
+    }
 }

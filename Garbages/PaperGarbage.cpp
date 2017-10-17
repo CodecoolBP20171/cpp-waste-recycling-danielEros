@@ -13,6 +13,6 @@ void PaperGarbage::squeeze() {
     this->isSqueezed = true;
 }
 
-bool PaperGarbage::getIsSqueezed() {
+bool PaperGarbage::getIsSqueezed() const {
     return isSqueezed;
 }

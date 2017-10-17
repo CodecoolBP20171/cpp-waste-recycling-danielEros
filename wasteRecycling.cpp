@@ -7,7 +7,7 @@
 using namespace std;
 
 int main() {
-    Garbage garbage("szemét");
+    /*Garbage garbage("szemét");
     garbage.printName();
     garbage.setName("ggg");
     garbage.printName();
@@ -17,19 +17,27 @@ int main() {
     cout << paperGarbage.getIsSqueezed() << endl;
     paperGarbage.squeeze();
     cout << paperGarbage.getIsSqueezed() << endl;
+    */
     PaperGarbage paperGarbage2("papi2");
+    //paperGarbage2.squeeze();
     paperGarbage2.printName();
 
+    /*
     PlasticGarbage plasticGarbage("mert ez műanyag");
     plasticGarbage.printName();
     cout << plasticGarbage.getIsClean() << endl;
     plasticGarbage.clean();
     cout << plasticGarbage.getIsClean() << endl;
+    */
 
     Dustbin dustbin("green");
-    cout << dustbin.getColor() << endl;
+    //cout << dustbin.getColor() << endl;
     //dustbin.paperContent[0] = paperGarbage;
     //cout << dustbin.paperContent[0].getName();
-    dustbin.throwOutPaperGarbage(paperGarbage);
+    try {
+        dustbin.throwOutPaperGarbage(paperGarbage2);
+    } catch(DustbinContentError &err) {
+        cout << err.what();
+    }
     return 0;
 }

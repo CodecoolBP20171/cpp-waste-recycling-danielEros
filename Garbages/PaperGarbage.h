@@ -12,7 +12,7 @@ public:
     PaperGarbage(){ isSqueezed = false; }
     PaperGarbage(string name);
     void squeeze();
-    bool getIsSqueezed();
+    bool getIsSqueezed() const;
 private:
     bool isSqueezed;
 };
