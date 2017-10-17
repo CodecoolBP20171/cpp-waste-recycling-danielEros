@@ -23,7 +23,6 @@ public:
 protected:
     string color;
     unique_ptr<PaperGarbage[]> paperContent;
-
     int getIndexOfLastElement();
 };
 
