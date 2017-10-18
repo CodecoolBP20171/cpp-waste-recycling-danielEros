@@ -45,22 +45,25 @@ int main() {
     Dustbin dustbin("green");
     Dustbin9000 dustbin9000("red");
     cout << dustbin9000.getColor() << endl;
-    dustbin9000.throwOutGarbage(garbage);
-    dustbin9000.throwOutMetalGarbage(metalGarbage);
+    //dustbin9000.throwOutGarbage(garbage);
+
     //cout << dustbin.getColor() << endl;
     //dustbin.paperContent[0] = paperGarbage;
     //cout << dustbin.paperContent[0].getName();
     try {
         //dustbin.emptyContents();
-        dustbin.throwOutGarbage(garbage);
-        dustbin.throwOutPaperGarbage(paperGarbage2);
-        dustbin.throwOutPlasticGarbage(plasticGarbage);
-        dustbin.throwOutPlasticGarbage(plasticGarbage2);
+        dustbin9000.throwOutMetalGarbage(metalGarbage);
+        //dustbin9000.throwOutMetalGarbage(metalGarbage);
+        //dustbin9000.throwOutMetalGarbage(metalGarbage);
+        dustbin9000.throwOutGarbage(garbage);
+        dustbin9000.throwOutPaperGarbage(paperGarbage2);
+        dustbin9000.throwOutPlasticGarbage(plasticGarbage);
+        dustbin9000.throwOutPlasticGarbage(plasticGarbage2);
         //dustbin.throwOutPlasticGarbage(plasticGarbage3);
-        dustbin.emptyContents();
-        dustbin.throwOutPlasticGarbage(plasticGarbage);
-        dustbin.throwOutPlasticGarbage(plasticGarbage2);
-        dustbin.throwOutPlasticGarbage(plasticGarbage3);
+        dustbin9000.emptyContents();
+        dustbin9000.throwOutPlasticGarbage(plasticGarbage);
+        dustbin9000.throwOutPlasticGarbage(plasticGarbage2);
+        dustbin9000.throwOutPlasticGarbage(plasticGarbage3);
     } catch(exception &err) {
         cout << err.what();
     }
