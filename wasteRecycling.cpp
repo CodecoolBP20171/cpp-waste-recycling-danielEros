@@ -4,6 +4,7 @@
 #include "Garbages/PlasticGarbage.h"
 #include "Dustbins/Dustbin.h"
 #include "Dustbins/Dustbin9000.h"
+#include "Garbages/MetalGarbage.h"
 
 using namespace std;
 
@@ -32,6 +33,8 @@ int main() {
     plasticGarbage2.clean();
     PlasticGarbage plasticGarbage3("műanyag3");
     plasticGarbage3.clean();
+    MetalGarbage metalGarbage("fémkosz");
+    //cout << metalGarbage.getName() << endl;
     /*
     plasticGarbage.printName();
     cout << plasticGarbage.getIsClean() << endl;
@@ -43,6 +46,7 @@ int main() {
     Dustbin9000 dustbin9000("red");
     cout << dustbin9000.getColor() << endl;
     dustbin9000.throwOutGarbage(garbage);
+    dustbin9000.throwOutMetalGarbage(metalGarbage);
     //cout << dustbin.getColor() << endl;
     //dustbin.paperContent[0] = paperGarbage;
     //cout << dustbin.paperContent[0].getName();
