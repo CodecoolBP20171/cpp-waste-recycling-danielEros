@@ -4,9 +4,7 @@
 
 #include "Dustbin.h"
 
-namespace dustbinParameters {
-    const int MAX_CONTAINER_SIZE = 2;
-}
+namespace dustbinParameters {const int MAX_CONTAINER_SIZE = 2;}
 
 Dustbin::Dustbin() : paperContent(new PaperGarbage[dustbinParameters::MAX_CONTAINER_SIZE]),
                      plasticContent(new PlasticGarbage[dustbinParameters::MAX_CONTAINER_SIZE]),
@@ -32,7 +30,7 @@ void Dustbin::throwOutPaperGarbage(const PaperGarbage &paperGarbage) {
         int indexOfLastElement = getIndexOfLastPaper();
         if(indexOfLastElement < dustbinParameters::MAX_CONTAINER_SIZE - 1) {
             paperContent[indexOfLastElement + 1] = paperGarbage;
-            cout << paperGarbage.getName() << " was thrown into the paper dustbin." << endl;
+            cout << paperGarbage.getName() << " was thrown into the paper container of dustbin." << endl;
         } else {
             throw DustbinIsFull();
         }
@@ -47,7 +45,7 @@ void Dustbin::throwOutPlasticGarbage(const PlasticGarbage &plasticGarbage) {
         int indexOfLastElement = getIndexOfLastPlastic();
         if(indexOfLastElement < dustbinParameters::MAX_CONTAINER_SIZE - 1) {
             plasticContent[indexOfLastElement + 1] = plasticGarbage;
-            cout << plasticGarbage.getName() << " was thrown into the plastic dustbin." << endl;
+            cout << plasticGarbage.getName() << " was thrown into the plastic container of dustbin." << endl;
         } else {
             throw DustbinIsFull();
         }
@@ -62,7 +60,7 @@ void Dustbin::throwOutGarbage(const Garbage &garbage) {
         int indexOfLastElement = getIndexOfLastGarbage();
         if(indexOfLastElement < dustbinParameters::MAX_CONTAINER_SIZE - 1) {
             houseWasteContent[indexOfLastElement + 1] = garbage;
-            cout << garbage.getName() << " was thrown into the house waste dustbin." << endl;
+            cout << garbage.getName() << " was thrown into the house waste container of dustbin." << endl;
         } else {
             throw DustbinIsFull();
         }

@@ -3,6 +3,7 @@
 #include "Garbages/PaperGarbage.h"
 #include "Garbages/PlasticGarbage.h"
 #include "Dustbins/Dustbin.h"
+#include "Dustbins/Dustbin9000.h"
 
 using namespace std;
 
@@ -39,6 +40,9 @@ int main() {
     */
 
     Dustbin dustbin("green");
+    Dustbin9000 dustbin9000("red");
+    cout << dustbin9000.getColor() << endl;
+    dustbin9000.throwOutGarbage(garbage);
     //cout << dustbin.getColor() << endl;
     //dustbin.paperContent[0] = paperGarbage;
     //cout << dustbin.paperContent[0].getName();
