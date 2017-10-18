@@ -43,8 +43,13 @@ int main() {
     //dustbin.paperContent[0] = paperGarbage;
     //cout << dustbin.paperContent[0].getName();
     try {
+        //dustbin.emptyContents();
         dustbin.throwOutGarbage(garbage);
         dustbin.throwOutPaperGarbage(paperGarbage2);
+        dustbin.throwOutPlasticGarbage(plasticGarbage);
+        dustbin.throwOutPlasticGarbage(plasticGarbage2);
+        //dustbin.throwOutPlasticGarbage(plasticGarbage3);
+        dustbin.emptyContents();
         dustbin.throwOutPlasticGarbage(plasticGarbage);
         dustbin.throwOutPlasticGarbage(plasticGarbage2);
         dustbin.throwOutPlasticGarbage(plasticGarbage3);

@@ -23,6 +23,7 @@ public:
     void throwOutPaperGarbage(const PaperGarbage &paperGarbage);
     void throwOutPlasticGarbage(const PlasticGarbage &plasticGarbage);
     void throwOutGarbage(const Garbage &garbage);
+    void emptyContents();
 protected:
     string color;
     unique_ptr<PaperGarbage[]> paperContent;
@@ -30,7 +31,6 @@ protected:
     unique_ptr<Garbage[]> houseWasteContent;
     int getIndexOfLastPaper();
     int getIndexOfLastPlastic();
-
     int getIndexOfLastGarbage();
 };
 

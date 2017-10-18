@@ -100,3 +100,12 @@ int Dustbin::getIndexOfLastGarbage() {
     }
     return result;
 }
+
+void Dustbin::emptyContents() {
+    for(int i=0; i<dustbinParameters::MAX_CONTAINER_SIZE; i++){
+        paperContent[i].setName("");
+        plasticContent[i].setName("");
+        houseWasteContent[i].setName("");
+    }
+    cout << "The dustbin was successfully emptied!" << endl;
+}
