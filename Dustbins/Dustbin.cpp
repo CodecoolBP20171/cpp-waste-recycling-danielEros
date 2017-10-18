@@ -58,7 +58,6 @@ string Dustbin::throwOutGarbage(const Garbage &garbage) {
         int indexOfLastElement = getIndexOfLastGarbage();
         if(indexOfLastElement < MAX_CONTAINER_SIZE - 1) {
             houseWasteContent[indexOfLastElement + 1] = garbage;
-            cout << garbage.getName() << " was thrown into the house waste container of dustbin." << endl;
             return garbage.getName() + " was thrown into the house waste container of dustbin.";
         } else {
             throw DustbinIsFull();

@@ -20,9 +20,7 @@ private:
     int failedTests;
 
     void TestCase1() {
-        // TODO: refine this to work well; currently it is not good if the program throws an error
-        // cout only from here, and not from the dustbin functions
-        // write additional tests
+        // TODO: write additional tests:
         // 1. try to throw out unnamed garbage
         // 2. try to throw out more items than capacity
         // 3. throw out capacity number of garbage, then empty dustbin, then throw other garbage
@@ -38,18 +36,20 @@ private:
         string result;
         try {
             result = dustbin.tryToThrowOut(garbage);
+            checkResult("general garbage was thrown into the house waste container of dustbin.", result);
+            cout << result << endl;
         } catch (exception &err) {
-            result = "This garbage cannot be put in the dustbin in this form!";
+            result = err.what();
+            checkResult("This garbage cannot be put in the dustbin in this form!", result);
+            cout << result << endl;
         }
-        checkResult("general garbage was thrown into the house waste container of dustbin.", result);
     }
-
 
     void checkResult(const string expected, const string actual)
     {
         if( actual == expected)
         {
-            cout << "Test ran OK." << endl;
+            cout << "Test ran OK. Message: ";
         }else{
             cout << "Invalid result! Expected: " << expected << " actual: " << actual << endl;
             ++failedTests;
