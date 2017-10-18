@@ -14,4 +14,11 @@ public:
     }
 };
 
+class DustbinIsFull : public std::exception {
+public:
+    virtual const char* what() const noexcept {
+        return "The dustbin is full!";
+    }
+};
+
 #endif //CPP_WASTE_RECYCLING_DANIELEROS_DUSTBINEXCEPTIONS_HPP

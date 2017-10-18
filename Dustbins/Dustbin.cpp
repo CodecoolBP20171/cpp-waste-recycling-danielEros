@@ -5,7 +5,7 @@
 #include "Dustbin.h"
 
 namespace dustbinParameters {
-    const int MAX_CONTAINER_SIZE = 10;
+    const int MAX_CONTAINER_SIZE = 2;
 }
 
 Dustbin::Dustbin() : paperContent(new PaperGarbage[dustbinParameters::MAX_CONTAINER_SIZE]){}
@@ -23,14 +23,15 @@ void Dustbin::setColor() {
 }
 
 void Dustbin::throwOutPaperGarbage(const PaperGarbage &paperGarbage) {
-    //TODO
-    // 1. and if there is still room for the paperGarage (i.e. paperContent.size() < 11)
-    //  if there is no room, throw a DustbinIsFull exception
-    // 2. EXTRA: max weight -> leads to far from here
+    //TODO EXTRA: max weight -> leads to far from here
     if(paperGarbage.getIsSqueezed() && !paperGarbage.getName().empty()){
         int indexOfLastElement = getIndexOfLastElement();
-        // IF indexOfLastElement >= (?) dustbinParameters::MAX_CONTAINER_SIZE throw DustbinIsFull exception
-        paperContent[indexOfLastElement+1] = paperGarbage;
+        if(indexOfLastElement < dustbinParameters::MAX_CONTAINER_SIZE - 1) {
+            paperContent[indexOfLastElement + 1] = paperGarbage;
+            cout << paperGarbage.getName() << " was thrown into the paper dustbin." << endl;
+        } else {
+            throw DustbinIsFull();
+        }
     } else {
         throw DustbinContentError();
     }

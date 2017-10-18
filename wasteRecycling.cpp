@@ -18,9 +18,10 @@ int main() {
     paperGarbage.squeeze();
     cout << paperGarbage.getIsSqueezed() << endl;
     */
-    PaperGarbage paperGarbage2("papi2");
+    PaperGarbage paperGarbage("papír");
+    PaperGarbage paperGarbage2("papír2");
     paperGarbage2.squeeze();
-    paperGarbage2.printName();
+    //paperGarbage2.printName();
 
     /*
     PlasticGarbage plasticGarbage("mert ez műanyag");
@@ -36,7 +37,8 @@ int main() {
     //cout << dustbin.paperContent[0].getName();
     try {
         dustbin.throwOutPaperGarbage(paperGarbage2);
-    } catch(DustbinContentError &err) {
+        dustbin.throwOutPaperGarbage(paperGarbage);
+    } catch(exception &err) {
         cout << err.what();
     }
     return 0;
