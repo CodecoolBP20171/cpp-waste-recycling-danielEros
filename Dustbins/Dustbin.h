@@ -25,6 +25,7 @@ public:
     void throwOutGarbage(const Garbage &garbage);
     void emptyContents();
 protected:
+    const int MAX_CONTAINER_SIZE = 2;
     string color;
     unique_ptr<PaperGarbage[]> paperContent;
     unique_ptr<PlasticGarbage[]> plasticContent;

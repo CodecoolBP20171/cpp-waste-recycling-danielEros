@@ -5,6 +5,7 @@
 #include "Dustbins/Dustbin.h"
 #include "Dustbins/Dustbin9000.h"
 #include "Garbages/MetalGarbage.h"
+#include "Garbages/BottleCap.h"
 
 using namespace std;
 
@@ -50,6 +51,9 @@ int main() {
     //cout << dustbin.getColor() << endl;
     //dustbin.paperContent[0] = paperGarbage;
     //cout << dustbin.paperContent[0].getName();
+    BottleCap bottleCap("első_kupak", "pink");
+    BottleCap bottleCap2("második_kupak", "kék");
+    cout << bottleCap.getName() << ": " << bottleCap.getColor() << endl;
     try {
         //dustbin.emptyContents();
         dustbin9000.throwOutMetalGarbage(metalGarbage);
