@@ -6,6 +6,10 @@
 
 BottleCap::BottleCap(string name, string color) : Garbage(name), color(color){}
 
-string BottleCap::getColor() {
+string BottleCap::getColor() const {
     return color;
+}
+
+void BottleCap::setColor(string color) {
+    this->color = color;
 }

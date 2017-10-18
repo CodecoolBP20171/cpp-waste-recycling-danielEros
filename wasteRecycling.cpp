@@ -56,6 +56,9 @@ int main() {
     cout << bottleCap.getName() << ": " << bottleCap.getColor() << endl;
     try {
         //dustbin.emptyContents();
+        dustbin9000.throwOutBottleCap(bottleCap);
+        dustbin9000.throwOutBottleCap(bottleCap);
+        dustbin9000.emptyContents();
         dustbin9000.throwOutMetalGarbage(metalGarbage);
         //dustbin9000.throwOutMetalGarbage(metalGarbage);
         //dustbin9000.throwOutMetalGarbage(metalGarbage);

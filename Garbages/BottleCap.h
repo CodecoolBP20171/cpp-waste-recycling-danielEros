@@ -12,7 +12,8 @@ class BottleCap : public Garbage {
 public:
     BottleCap(){}
     BottleCap(string name, string color);
-    string getColor();
+    string getColor() const;
+    void setColor(string color);
 private:
     string color;
 };
