@@ -18,15 +18,16 @@ class Dustbin {
 public:
     Dustbin();
     Dustbin(string color);
+    string tryToThrowOut(const Garbage &garbage);
+protected:
+    const int MAX_CONTAINER_SIZE = 2;
+    string color;
     string getColor();
     void setColor();
     void throwOutPaperGarbage(const PaperGarbage &paperGarbage);
     void throwOutPlasticGarbage(const PlasticGarbage &plasticGarbage);
     string throwOutGarbage(const Garbage &garbage);
     void emptyContents();
-protected:
-    const int MAX_CONTAINER_SIZE = 2;
-    string color;
     unique_ptr<PaperGarbage[]> paperContent;
     unique_ptr<PlasticGarbage[]> plasticContent;
     unique_ptr<Garbage[]> houseWasteContent;

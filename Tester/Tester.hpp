@@ -19,14 +19,20 @@ public:
 private:
     int failedTests;
 
-    string tryToThrowOut(Dustbin &dustbin, Garbage &garbage) {
-        return dustbin.throwOutGarbage(garbage);
-    }
+//    string tryToThrowOut(Dustbin &dustbin, Garbage &garbage) {
+//        return dustbin.throwOutGarbage(garbage);
+//    }
 
     void TestCase1() {
+        // TODO: refine this to work well; currently it is not good if the program throws an error
         Dustbin dustbin("green");
         Garbage garbage("general garbage");
-        string result = tryToThrowOut(dustbin, garbage);
+        string result;
+        try {
+            result = dustbin.tryToThrowOut(garbage);
+        } catch (exception &err) {
+            result = "This garbage cannot be put in the dustbin in this form!";
+        }
         checkResult("general garbage was thrown into the house waste container of dustbin.", result);
     }
 

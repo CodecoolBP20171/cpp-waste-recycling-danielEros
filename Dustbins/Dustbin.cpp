@@ -106,3 +106,7 @@ void Dustbin::emptyContents() {
     }
     cout << "The dustbin was successfully emptied!" << endl;
 }
+
+string Dustbin::tryToThrowOut(const Garbage &garbage) {
+    return this->throwOutGarbage(garbage);
+}
