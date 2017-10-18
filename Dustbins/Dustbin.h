@@ -22,7 +22,7 @@ public:
     void setColor();
     void throwOutPaperGarbage(const PaperGarbage &paperGarbage);
     void throwOutPlasticGarbage(const PlasticGarbage &plasticGarbage);
-    void throwOutGarbage(const Garbage &garbage);
+    string throwOutGarbage(const Garbage &garbage);
     void emptyContents();
 protected:
     const int MAX_CONTAINER_SIZE = 2;

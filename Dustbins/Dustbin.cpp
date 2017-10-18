@@ -52,13 +52,14 @@ void Dustbin::throwOutPlasticGarbage(const PlasticGarbage &plasticGarbage) {
     }
 }
 
-void Dustbin::throwOutGarbage(const Garbage &garbage) {
+string Dustbin::throwOutGarbage(const Garbage &garbage) {
     //TODO EXTRA: max weight -> leads to far from here
     if(!garbage.getName().empty()){
         int indexOfLastElement = getIndexOfLastGarbage();
         if(indexOfLastElement < MAX_CONTAINER_SIZE - 1) {
             houseWasteContent[indexOfLastElement + 1] = garbage;
             cout << garbage.getName() << " was thrown into the house waste container of dustbin." << endl;
+            return garbage.getName() + " was thrown into the house waste container of dustbin.";
         } else {
             throw DustbinIsFull();
         }
