@@ -19,14 +19,22 @@ public:
 private:
     int failedTests;
 
-//    string tryToThrowOut(Dustbin &dustbin, Garbage &garbage) {
-//        return dustbin.throwOutGarbage(garbage);
-//    }
-
     void TestCase1() {
         // TODO: refine this to work well; currently it is not good if the program throws an error
+        // cout only from here, and not from the dustbin functions
+        // write additional tests
+        // 1. try to throw out unnamed garbage
+        // 2. try to throw out more items than capacity
+        // 3. throw out capacity number of garbage, then empty dustbin, then throw other garbage
+        // 4. throw out squeezed paper
+        // 5. try to throw out unsqueezed paper
+        // 6. throw out clean plastic
+        // 7. try to throw out unclean plastic
+        // 8. throw out metal
+        // 9. throw out pin bottle cap
+        // 10. throw out !pink bottle cap
         Dustbin dustbin("green");
-        Garbage garbage("general garbage");
+        Garbage garbage;
         string result;
         try {
             result = dustbin.tryToThrowOut(garbage);
