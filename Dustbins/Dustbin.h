@@ -22,12 +22,16 @@ public:
     void setColor();
     void throwOutPaperGarbage(const PaperGarbage &paperGarbage);
     void throwOutPlasticGarbage(const PlasticGarbage &plasticGarbage);
+    void throwOutGarbage(const Garbage &garbage);
 protected:
     string color;
     unique_ptr<PaperGarbage[]> paperContent;
     unique_ptr<PlasticGarbage[]> plasticContent;
+    unique_ptr<Garbage[]> houseWasteContent;
     int getIndexOfLastPaper();
     int getIndexOfLastPlastic();
+
+    int getIndexOfLastGarbage();
 };
 
 

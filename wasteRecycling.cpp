@@ -7,7 +7,8 @@
 using namespace std;
 
 int main() {
-    /*Garbage garbage("szemét");
+    Garbage garbage("szemét");
+    /*
     garbage.printName();
     garbage.setName("ggg");
     garbage.printName();
@@ -42,6 +43,7 @@ int main() {
     //dustbin.paperContent[0] = paperGarbage;
     //cout << dustbin.paperContent[0].getName();
     try {
+        dustbin.throwOutGarbage(garbage);
         dustbin.throwOutPaperGarbage(paperGarbage2);
         dustbin.throwOutPlasticGarbage(plasticGarbage);
         dustbin.throwOutPlasticGarbage(plasticGarbage2);
