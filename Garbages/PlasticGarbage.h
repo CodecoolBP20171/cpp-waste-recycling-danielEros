@@ -12,7 +12,7 @@ public:
     PlasticGarbage(){ isClean = false; }
     PlasticGarbage(string name);
     void clean();
-    bool getIsClean();
+    bool getIsClean() const;
 private:
     bool isClean;
 };

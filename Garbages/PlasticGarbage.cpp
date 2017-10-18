@@ -13,6 +13,6 @@ void PlasticGarbage::clean() {
     this->isClean = true;
 }
 
-bool PlasticGarbage::getIsClean() {
+bool PlasticGarbage::getIsClean() const {
     return isClean;
 }

@@ -23,8 +23,14 @@ int main() {
     paperGarbage2.squeeze();
     //paperGarbage2.printName();
 
-    /*
+
     PlasticGarbage plasticGarbage("mert ez műanyag");
+    plasticGarbage.clean();
+    PlasticGarbage plasticGarbage2("műanyag2");
+    plasticGarbage2.clean();
+    PlasticGarbage plasticGarbage3("műanyag3");
+    plasticGarbage3.clean();
+    /*
     plasticGarbage.printName();
     cout << plasticGarbage.getIsClean() << endl;
     plasticGarbage.clean();
@@ -37,7 +43,9 @@ int main() {
     //cout << dustbin.paperContent[0].getName();
     try {
         dustbin.throwOutPaperGarbage(paperGarbage2);
-        dustbin.throwOutPaperGarbage(paperGarbage);
+        dustbin.throwOutPlasticGarbage(plasticGarbage);
+        dustbin.throwOutPlasticGarbage(plasticGarbage2);
+        dustbin.throwOutPlasticGarbage(plasticGarbage3);
     } catch(exception &err) {
         cout << err.what();
     }

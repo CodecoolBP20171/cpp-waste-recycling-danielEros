@@ -10,6 +10,7 @@
 #include "../ErrorHandling/DustBinExceptions.hpp"
 #include "../Garbages/Garbage.h"
 #include "../Garbages/PaperGarbage.h"
+#include "../Garbages/PlasticGarbage.h"
 
 using namespace std;
 
@@ -20,10 +21,13 @@ public:
     string getColor();
     void setColor();
     void throwOutPaperGarbage(const PaperGarbage &paperGarbage);
+    void throwOutPlasticGarbage(const PlasticGarbage &plasticGarbage);
 protected:
     string color;
     unique_ptr<PaperGarbage[]> paperContent;
-    int getIndexOfLastElement();
+    unique_ptr<PlasticGarbage[]> plasticContent;
+    int getIndexOfLastPaper();
+    int getIndexOfLastPlastic();
 };
 
 
