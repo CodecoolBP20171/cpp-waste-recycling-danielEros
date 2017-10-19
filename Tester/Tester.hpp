@@ -13,43 +13,123 @@ public:
     {
         failedTests = 0;
         TestCase1();
+        TestCase2();
+        TestCase3();
+        TestCase4();
+        TestCase5();
+        TestCase6();
+        TestCase7();
+        TestCase8();
+        TestCase9();
         evaluateTestOutcomes();
     }
 
 private:
     int failedTests;
-
+    // TODO: write additional tests:
+    // 9. throw out pin bottle cap
+    // 10. throw out !pink bottle cap
     void TestCase1() {
-        // TODO: write additional tests:
-        // 1. try to throw out unnamed garbage
-        // 2. try to throw out more items than capacity
-        // 3. throw out capacity number of garbage, then empty dustbin, then throw other garbage
-        // 4. throw out squeezed paper
-        // 5. try to throw out unsqueezed paper
-        // 6. throw out clean plastic
-        // 7. try to throw out unclean plastic
-        // 8. throw out metal
-        // 9. throw out pin bottle cap
-        // 10. throw out !pink bottle cap
+        // throw out "general garbage" in the Dustbin
+        Dustbin dustbin("green");
+        Garbage garbage("general garbage");
+        string expectedResult = "general garbage was thrown into the house waste container of dustbin.";
+        string actualResult = dustbin.tryToThrowOut(garbage);
+        checkResult(expectedResult, actualResult);
+    }
+
+    void TestCase2() {
+        // try to throw out unnamed garbage
         Dustbin dustbin("green");
         Garbage garbage;
-        string result;
-        try {
-            result = dustbin.tryToThrowOut(garbage);
-            checkResult("general garbage was thrown into the house waste container of dustbin.", result);
-            cout << result << endl;
-        } catch (exception &err) {
-            result = err.what();
-            checkResult("This garbage cannot be put in the dustbin in this form!", result);
-            cout << result << endl;
-        }
+        string expectedResult = "This garbage cannot be put in the dustbin in this form!";
+        string actualResult = dustbin.tryToThrowOut(garbage);
+        checkResult(expectedResult, actualResult);
+    }
+
+    void TestCase3() {
+        // throw out squeezed paper
+        Dustbin dustbin("green");
+        PaperGarbage paperGarbage("paper garbage");
+        paperGarbage.squeeze();
+        string expectedResult = "paper garbage was thrown into the paper container of dustbin.";
+        string actualResult = dustbin.tryToThrowOutPaper(paperGarbage);
+        checkResult(expectedResult, actualResult);
+    }
+
+    void TestCase4() {
+        // try to throw out not squeezed paper
+        Dustbin dustbin("green");
+        PaperGarbage paperGarbage("paper garbage");
+        string expectedResult = "This garbage cannot be put in the dustbin in this form!";
+        string actualResult = dustbin.tryToThrowOutPaper(paperGarbage);
+        checkResult(expectedResult, actualResult);
+    }
+
+    void TestCase5() {
+        // throw out clean plastic
+        Dustbin dustbin("green");
+        PlasticGarbage plasticGarbage("plastic garbage");
+        plasticGarbage.clean();
+        string expectedResult = "plastic garbage was thrown into the plastic container of dustbin.";
+        string actualResult = dustbin.tryToThrowOutPlastic(plasticGarbage);
+        checkResult(expectedResult, actualResult);
+    }
+
+    void TestCase6() {
+        // try to throw out unclean plastic
+        Dustbin dustbin("green");
+        PlasticGarbage plasticGarbage("plastic garbage");
+        string expectedResult = "This garbage cannot be put in the dustbin in this form!";
+        string actualResult = dustbin.tryToThrowOutPlastic(plasticGarbage);
+        checkResult(expectedResult, actualResult);
+    }
+
+    void TestCase7() {
+        // throw out metal
+        Dustbin9000 dustbin9000("green");
+        MetalGarbage metalGarbage("metal garbage");
+        string expectedResult = "metal garbage was thrown into the metal container of dustbin.";
+        string actualResult = dustbin9000.tryToThrowOutMetal(metalGarbage);
+        checkResult(expectedResult, actualResult);
+    }
+    void TestCase8() {
+        // try to throw out more metal items than capacity (2)
+        Dustbin9000 dustbin9000("green");
+        MetalGarbage metalGarbage("metal garbage");
+        MetalGarbage metalGarbage2("metal garbage2");
+        MetalGarbage metalGarbage3("metal garbage3");
+        string expectedResult = "metal garbage was thrown into the metal container of dustbin. "
+                                "metal garbage2 was thrown into the metal container of dustbin. "
+                                "The dustbin is full!";
+        string actualResult = dustbin9000.tryToThrowOutMetal(metalGarbage)  + " ";
+        actualResult += dustbin9000.tryToThrowOutMetal(metalGarbage2) + " ";
+        actualResult += dustbin9000.tryToThrowOutMetal(metalGarbage3);
+        checkResult(expectedResult, actualResult);
+    }
+
+    void TestCase9() {
+        // throw out maximum number of metal, then empty dustbin, then throw other metal
+        Dustbin9000 dustbin9000("green");
+        MetalGarbage metalGarbage("metal garbage");
+        MetalGarbage metalGarbage2("metal garbage2");
+        MetalGarbage metalGarbage3("metal garbage3");
+        string expectedResult = "metal garbage was thrown into the metal container of dustbin. "
+                                "metal garbage2 was thrown into the metal container of dustbin. "
+                                "The dustbin was successfully emptied! "
+                                "metal garbage3 was thrown into the metal container of dustbin.";
+        string actualResult = dustbin9000.tryToThrowOutMetal(metalGarbage)  + " ";
+        actualResult += dustbin9000.tryToThrowOutMetal(metalGarbage2) + " ";
+        actualResult += dustbin9000.emptyContents() + " ";
+        actualResult += dustbin9000.tryToThrowOutMetal(metalGarbage3);
+        checkResult(expectedResult, actualResult);
     }
 
     void checkResult(const string expected, const string actual)
     {
         if( actual == expected)
         {
-            cout << "Test ran OK. Message: ";
+            cout << "Test ran OK. Message: " << actual << endl;
         }else{
             cout << "Invalid result! Expected: " << expected << " actual: " << actual << endl;
             ++failedTests;

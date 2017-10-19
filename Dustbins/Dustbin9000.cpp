@@ -12,12 +12,12 @@ Dustbin9000::Dustbin9000() : Dustbin(),
                              metalContent(new MetalGarbage[MAX_CONTAINER_SIZE]),
                              bottleCapContent(new BottleCap[MAX_CONTAINER_SIZE]){}
 
-void Dustbin9000::throwOutMetalGarbage(const MetalGarbage &metalGarbage) {
+string Dustbin9000::throwOutMetalGarbage(const MetalGarbage &metalGarbage) {
     if(!metalGarbage.getName().empty()){
         int indexOfLastElement = getIndexOfLastMetalGarbage();
         if(indexOfLastElement < MAX_CONTAINER_SIZE - 1) {
             metalContent[indexOfLastElement + 1] = metalGarbage;
-            cout << metalGarbage.getName() << " was thrown into the metal container of dustbin." << endl;
+            return metalGarbage.getName() + " was thrown into the metal container of dustbin.";
         } else {
             throw DustbinIsFull();
         }
@@ -60,11 +60,22 @@ int Dustbin9000::getIndexOfLastBottleCap() {
     return result;
 }
 
-void Dustbin9000::emptyContents() {
+string Dustbin9000::emptyContents() {
     for(int i=0; i<MAX_CONTAINER_SIZE; i++){
         metalContent[i].setName("");
         bottleCapContent[i].setName("");
         bottleCapContent[i].setColor("");
     }
-    Dustbin::emptyContents();
+    return Dustbin::emptyContents();
 }
+
+string Dustbin9000::tryToThrowOutMetal(const MetalGarbage &metalGarbage) {
+    string result;
+    try {
+        result = throwOutMetalGarbage(metalGarbage);
+    } catch (exception &message) {
+        result = message.what();
+    }
+    return result;
+}
+

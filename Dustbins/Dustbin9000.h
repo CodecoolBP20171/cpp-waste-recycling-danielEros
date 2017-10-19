@@ -15,14 +15,14 @@ class Dustbin9000 : public Dustbin {
 public:
     Dustbin9000();
     Dustbin9000(string color);
-    void throwOutMetalGarbage(const MetalGarbage &metalGarbage);
-    void throwOutBottleCap(const BottleCap &bottleCap);
-    void emptyContents();
+    string tryToThrowOutMetal(const MetalGarbage &metalGarbage);
+    string emptyContents();
 private:
     unique_ptr<MetalGarbage[]> metalContent;
     unique_ptr<BottleCap[]> bottleCapContent;
+    string throwOutMetalGarbage(const MetalGarbage &metalGarbage);
+    void throwOutBottleCap(const BottleCap &bottleCap);
     int getIndexOfLastMetalGarbage();
-
     int getIndexOfLastBottleCap();
 };
 
