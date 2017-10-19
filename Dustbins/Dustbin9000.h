@@ -16,12 +16,13 @@ public:
     Dustbin9000();
     Dustbin9000(string color);
     string tryToThrowOutMetal(const MetalGarbage &metalGarbage);
+    string tryToThrowOutBottleCap(const BottleCap &bottleCap);
     string emptyContents();
 private:
     unique_ptr<MetalGarbage[]> metalContent;
     unique_ptr<BottleCap[]> bottleCapContent;
     string throwOutMetalGarbage(const MetalGarbage &metalGarbage);
-    void throwOutBottleCap(const BottleCap &bottleCap);
+    string throwOutBottleCap(const BottleCap &bottleCap);
     int getIndexOfLastMetalGarbage();
     int getIndexOfLastBottleCap();
 };

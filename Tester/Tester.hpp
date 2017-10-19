@@ -21,14 +21,14 @@ public:
         TestCase7();
         TestCase8();
         TestCase9();
+        TestCase10();
+        TestCase11();
         evaluateTestOutcomes();
     }
 
 private:
     int failedTests;
-    // TODO: write additional tests:
-    // 9. throw out pin bottle cap
-    // 10. throw out !pink bottle cap
+
     void TestCase1() {
         // throw out "general garbage" in the Dustbin
         Dustbin dustbin("green");
@@ -122,6 +122,24 @@ private:
         actualResult += dustbin9000.tryToThrowOutMetal(metalGarbage2) + " ";
         actualResult += dustbin9000.emptyContents() + " ";
         actualResult += dustbin9000.tryToThrowOutMetal(metalGarbage3);
+        checkResult(expectedResult, actualResult);
+    }
+
+    void TestCase10() {
+        // throw out pink bottle cap
+        Dustbin9000 dustbin9000("green");
+        BottleCap bottleCap("bottle cap","pink");
+        string expectedResult = "bottle cap was thrown into the bottle cap container of dustbin.";
+        string actualResult = dustbin9000.tryToThrowOutBottleCap(bottleCap);
+        checkResult(expectedResult, actualResult);
+    }
+
+    void TestCase11() {
+        // throw out !pink bottle cap
+        Dustbin9000 dustbin9000("green");
+        BottleCap bottleCap("bottle cap2","red");
+        string expectedResult = "This bottle cap is not pink and/or do not have a name!";
+        string actualResult = dustbin9000.tryToThrowOutBottleCap(bottleCap);
         checkResult(expectedResult, actualResult);
     }
 

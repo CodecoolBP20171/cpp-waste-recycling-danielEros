@@ -26,12 +26,12 @@ string Dustbin9000::throwOutMetalGarbage(const MetalGarbage &metalGarbage) {
     }
 }
 
-void Dustbin9000::throwOutBottleCap(const BottleCap &bottleCap) {
+string Dustbin9000::throwOutBottleCap(const BottleCap &bottleCap) {
     if(bottleCap.getColor() == "pink" && !bottleCap.getName().empty()){
     int indexOfLastElement = getIndexOfLastBottleCap();
         if(indexOfLastElement < MAX_CONTAINER_SIZE - 1) {
             bottleCapContent[indexOfLastElement + 1] = bottleCap;
-            cout << bottleCap.getName() << " was thrown into the bottle cap container of dustbin." << endl;
+            return bottleCap.getName() + " was thrown into the bottle cap container of dustbin.";
         } else {
             throw DustbinIsFull();
         }
@@ -73,6 +73,16 @@ string Dustbin9000::tryToThrowOutMetal(const MetalGarbage &metalGarbage) {
     string result;
     try {
         result = throwOutMetalGarbage(metalGarbage);
+    } catch (exception &message) {
+        result = message.what();
+    }
+    return result;
+}
+
+string Dustbin9000::tryToThrowOutBottleCap(const BottleCap &bottleCap) {
+    string result;
+    try {
+        result = throwOutBottleCap(bottleCap);
     } catch (exception &message) {
         result = message.what();
     }
