@@ -21,4 +21,11 @@ public:
     }
 };
 
+class BottleCapException : public std::exception {
+public:
+    virtual const char* what() const noexcept {
+        return "This bottle cap is not pink and/or do not have a name!";
+    }
+};
+
 #endif //CPP_WASTE_RECYCLING_DANIELEROS_DUSTBINEXCEPTIONS_HPP

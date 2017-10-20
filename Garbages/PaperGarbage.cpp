@@ -5,7 +5,6 @@
 #include "PaperGarbage.h"
 
 PaperGarbage::PaperGarbage(string name) : Garbage(name) {
-    this->name = name;
     isSqueezed = false;
 }
 

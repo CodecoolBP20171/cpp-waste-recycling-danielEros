@@ -4,17 +4,13 @@
 
 #include "Dustbin.h"
 
-namespace dustbinParameters {
-    const int MAX_CONTAINER_SIZE = 2;
-}
+Dustbin::Dustbin() : paperContent(new PaperGarbage[MAX_CONTAINER_SIZE]),
+                     plasticContent(new PlasticGarbage[MAX_CONTAINER_SIZE]),
+                     houseWasteContent(new Garbage[MAX_CONTAINER_SIZE]){}
 
-Dustbin::Dustbin() : paperContent(new PaperGarbage[dustbinParameters::MAX_CONTAINER_SIZE]),
-                     plasticContent(new PlasticGarbage[dustbinParameters::MAX_CONTAINER_SIZE]),
-                     houseWasteContent(new Garbage[dustbinParameters::MAX_CONTAINER_SIZE]){}
-
-Dustbin::Dustbin(string color) : paperContent(new PaperGarbage[dustbinParameters::MAX_CONTAINER_SIZE]),
-                                 plasticContent(new PlasticGarbage[dustbinParameters::MAX_CONTAINER_SIZE]),
-                                 houseWasteContent(new Garbage[dustbinParameters::MAX_CONTAINER_SIZE]){
+Dustbin::Dustbin(string color) : paperContent(new PaperGarbage[MAX_CONTAINER_SIZE]),
+                                 plasticContent(new PlasticGarbage[MAX_CONTAINER_SIZE]),
+                                 houseWasteContent(new Garbage[MAX_CONTAINER_SIZE]){
     this->color = color;
 }
 
@@ -26,13 +22,12 @@ void Dustbin::setColor() {
     this->color = color;
 }
 
-void Dustbin::throwOutPaperGarbage(const PaperGarbage &paperGarbage) {
-    //TODO EXTRA: max weight -> leads to far from here
+string Dustbin::throwOutPaperGarbage(const PaperGarbage &paperGarbage) {
     if(paperGarbage.getIsSqueezed() && !paperGarbage.getName().empty()){
         int indexOfLastElement = getIndexOfLastPaper();
-        if(indexOfLastElement < dustbinParameters::MAX_CONTAINER_SIZE - 1) {
+        if(indexOfLastElement < MAX_CONTAINER_SIZE - 1) {
             paperContent[indexOfLastElement + 1] = paperGarbage;
-            cout << paperGarbage.getName() << " was thrown into the paper dustbin." << endl;
+            return paperGarbage.getName() + " was thrown into the paper container of dustbin.";
         } else {
             throw DustbinIsFull();
         }
@@ -41,13 +36,12 @@ void Dustbin::throwOutPaperGarbage(const PaperGarbage &paperGarbage) {
     }
 }
 
-void Dustbin::throwOutPlasticGarbage(const PlasticGarbage &plasticGarbage) {
-    //TODO EXTRA: max weight -> leads to far from here
+string Dustbin::throwOutPlasticGarbage(const PlasticGarbage &plasticGarbage) {
     if(plasticGarbage.getIsClean() && !plasticGarbage.getName().empty()){
         int indexOfLastElement = getIndexOfLastPlastic();
-        if(indexOfLastElement < dustbinParameters::MAX_CONTAINER_SIZE - 1) {
+        if(indexOfLastElement < MAX_CONTAINER_SIZE - 1) {
             plasticContent[indexOfLastElement + 1] = plasticGarbage;
-            cout << plasticGarbage.getName() << " was thrown into the plastic dustbin." << endl;
+            return plasticGarbage.getName() + " was thrown into the plastic container of dustbin.";
         } else {
             throw DustbinIsFull();
         }
@@ -56,13 +50,12 @@ void Dustbin::throwOutPlasticGarbage(const PlasticGarbage &plasticGarbage) {
     }
 }
 
-void Dustbin::throwOutGarbage(const Garbage &garbage) {
-    //TODO EXTRA: max weight -> leads to far from here
+string Dustbin::throwOutGarbage(const Garbage &garbage) {
     if(!garbage.getName().empty()){
         int indexOfLastElement = getIndexOfLastGarbage();
-        if(indexOfLastElement < dustbinParameters::MAX_CONTAINER_SIZE - 1) {
+        if(indexOfLastElement < MAX_CONTAINER_SIZE - 1) {
             houseWasteContent[indexOfLastElement + 1] = garbage;
-            cout << garbage.getName() << " was thrown into the house waste dustbin." << endl;
+            return garbage.getName() + " was thrown into the house waste container of dustbin.";
         } else {
             throw DustbinIsFull();
         }
@@ -73,7 +66,7 @@ void Dustbin::throwOutGarbage(const Garbage &garbage) {
 
 int Dustbin::getIndexOfLastPaper() {
     int result = -1;
-    for(int i=0; i<dustbinParameters::MAX_CONTAINER_SIZE; i++){
+    for(int i=0; i<MAX_CONTAINER_SIZE; i++){
         if(!paperContent[i].getName().empty()){
             result = i;
         }
@@ -83,7 +76,7 @@ int Dustbin::getIndexOfLastPaper() {
 
 int Dustbin::getIndexOfLastPlastic() {
     int result = -1;
-    for(int i=0; i<dustbinParameters::MAX_CONTAINER_SIZE; i++){
+    for(int i=0; i<MAX_CONTAINER_SIZE; i++){
         if(!plasticContent[i].getName().empty()){
             result = i;
         }
@@ -93,7 +86,7 @@ int Dustbin::getIndexOfLastPlastic() {
 
 int Dustbin::getIndexOfLastGarbage() {
     int result = -1;
-    for(int i=0; i<dustbinParameters::MAX_CONTAINER_SIZE; i++){
+    for(int i=0; i<MAX_CONTAINER_SIZE; i++){
         if(!houseWasteContent[i].getName().empty()){
             result = i;
         }
@@ -101,11 +94,42 @@ int Dustbin::getIndexOfLastGarbage() {
     return result;
 }
 
-void Dustbin::emptyContents() {
-    for(int i=0; i<dustbinParameters::MAX_CONTAINER_SIZE; i++){
+string Dustbin::emptyContents() {
+    for(int i=0; i<MAX_CONTAINER_SIZE; i++){
         paperContent[i].setName("");
         plasticContent[i].setName("");
         houseWasteContent[i].setName("");
     }
-    cout << "The dustbin was successfully emptied!" << endl;
+    return "The dustbin was successfully emptied!";
 }
+
+string Dustbin::tryToThrowOut(const Garbage &garbage) {
+    string result;
+    try {
+        result = throwOutGarbage(garbage);
+    } catch (exception &message) {
+        result = message.what();
+    }
+    return result;
+}
+
+string Dustbin::tryToThrowOutPaper(const PaperGarbage &paperGarbage) {
+    string result;
+    try {
+        result = throwOutPaperGarbage(paperGarbage);
+    } catch (exception &message) {
+        result = message.what();
+    }
+    return result;
+}
+
+string Dustbin::tryToThrowOutPlastic(const PlasticGarbage &plasticGarbage) {
+    string result;
+    try {
+        result = throwOutPlasticGarbage(plasticGarbage);
+    } catch (exception &message) {
+        result = message.what();
+    }
+    return result;
+}
+
