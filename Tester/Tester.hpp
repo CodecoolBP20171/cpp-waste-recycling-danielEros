@@ -4,6 +4,7 @@
 
 #ifndef CPP_WASTE_RECYCLING_DANIELEROS_TESTER_HPP
 #define CPP_WASTE_RECYCLING_DANIELEROS_TESTER_HPP
+
 #include "../Dustbins/Dustbin.h"
 #include "../Dustbins/Dustbin9000.h"
 
