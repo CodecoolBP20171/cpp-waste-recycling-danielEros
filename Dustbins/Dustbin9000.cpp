@@ -88,4 +88,3 @@ string Dustbin9000::tryToThrowOutBottleCap(const BottleCap &bottleCap) {
     }
     return result;
 }
-

@@ -132,4 +132,3 @@ string Dustbin::tryToThrowOutPlastic(const PlasticGarbage &plasticGarbage) {
     }
     return result;
 }
-

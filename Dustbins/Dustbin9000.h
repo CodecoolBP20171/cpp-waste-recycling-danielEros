@@ -11,7 +11,6 @@
 #include "../Garbages/BottleCap.h"
 
 class Dustbin9000 : public Dustbin {
-// TODO: most members can be private after finishing Tester!
 public:
     Dustbin9000();
     Dustbin9000(string color);
