@@ -4,6 +4,4 @@
 
 #include "MetalGarbage.h"
 
-MetalGarbage::MetalGarbage(string name) : Garbage(name) {
-
-}
+MetalGarbage::MetalGarbage(string name) : Garbage(name) {}

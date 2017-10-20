@@ -5,6 +5,7 @@
 #ifndef CPP_WASTE_RECYCLING_DANIELEROS_GARBAGE_H
 #define CPP_WASTE_RECYCLING_DANIELEROS_GARBAGE_H
 
+
 #include <iostream>
 using namespace std;
 
@@ -15,7 +16,6 @@ public:
     void printName();
     string getName() const;
     void setName(string);
-
 protected:
     string name;
 };

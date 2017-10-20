@@ -11,7 +11,6 @@
 #include "../Garbages/Garbage.h"
 #include "../Garbages/PaperGarbage.h"
 #include "../Garbages/PlasticGarbage.h"
-#include "../Garbages/MetalGarbage.h"
 
 using namespace std;
 

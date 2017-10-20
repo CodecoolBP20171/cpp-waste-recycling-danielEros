@@ -5,6 +5,7 @@
 #ifndef CPP_WASTE_RECYCLING_DANIELEROS_PLASTICGARBAGE_H
 #define CPP_WASTE_RECYCLING_DANIELEROS_PLASTICGARBAGE_H
 
+
 #include "Garbage.h"
 
 class PlasticGarbage : public Garbage {

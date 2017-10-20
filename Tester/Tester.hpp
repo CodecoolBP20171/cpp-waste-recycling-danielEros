@@ -4,8 +4,8 @@
 
 #ifndef CPP_WASTE_RECYCLING_DANIELEROS_TESTER_HPP
 #define CPP_WASTE_RECYCLING_DANIELEROS_TESTER_HPP
-//#include "../wasteRecycling.cpp"
 #include "../Dustbins/Dustbin.h"
+#include "../Dustbins/Dustbin9000.h"
 
 class Tester {
 public:
@@ -93,6 +93,7 @@ private:
         string actualResult = dustbin9000.tryToThrowOutMetal(metalGarbage);
         checkResult(expectedResult, actualResult);
     }
+
     void TestCase8() {
         // try to throw out more metal items than capacity (2)
         Dustbin9000 dustbin9000("green");
@@ -145,20 +146,18 @@ private:
 
     void checkResult(const string expected, const string actual)
     {
-        if( actual == expected)
-        {
+        if( actual == expected) {
             cout << "Test ran OK. Message: " << actual << endl;
-        }else{
+        } else {
             cout << "Invalid result! Expected: " << expected << " actual: " << actual << endl;
             ++failedTests;
         }
     }
 
-    void evaluateTestOutcomes()
-    {
+    void evaluateTestOutcomes(){
         if(0 != failedTests){
             cout << failedTests << " tests failed." << endl;
-        }else{
+        } else {
             cout << "All tests passed!" << endl;
         }
     }
